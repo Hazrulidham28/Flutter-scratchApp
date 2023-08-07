@@ -23,7 +23,12 @@ class MyApp extends StatelessWidget {
     //return material app widget, turn combination off widget to real app
 
     return MaterialApp(
-      home: Text('Hello!'),
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('My First App'),
+        ),
+        body: Text('This is my default text'),
+      ),
     );
   }
 }
