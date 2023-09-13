@@ -4,7 +4,8 @@ import 'answer.dart';
 
 class Quiz extends StatelessWidget {
   final List<Map<String, Object>> questions;
-  final Function answerQuestion;
+  //change function into VoidCallBack
+  final VoidCallback answerQuestion;
   final int questionIndex;
 
   Quiz(
@@ -21,7 +22,7 @@ class Quiz extends StatelessWidget {
         ),
         //spread operator as three dot , it take a list and pull all the value to surrounding
         ...(questions[questionIndex]['answers'] as List<String>).map((answers) {
-          return Answer(answerQuestion(), answers);
+          return Answer(answerQuestion, answers);
         }).toList()
       ],
     );

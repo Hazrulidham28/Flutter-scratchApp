@@ -1,8 +1,9 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:scratch_app/result.dart';
-import 'quiz.dart';
+
+import './quiz.dart';
+import './result.dart';
 
 void main() {
   //from material.dart
@@ -46,8 +47,6 @@ class _MyAppState extends State<MyApp> {
   var _questionIndex = 0;
 
   void _answerQuestion() {
-    if (_questionIndex < _questions.length) {}
-
     setState(() {
       _questionIndex++;
     });
@@ -73,7 +72,7 @@ class _MyAppState extends State<MyApp> {
                 questions: _questions,
               )
             : // ? = if , : = else
-            result(),
+            Result(),
       ),
     );
   }
