@@ -1,6 +1,7 @@
 # scratch_app
 
-A new Flutter project.
+A flutter app for simple quiz
+-applying widget concept
 
 ## Getting Started
 
