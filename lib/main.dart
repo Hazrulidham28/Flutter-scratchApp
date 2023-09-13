@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import './question.dart';
-import './answer.dart';
+import 'package:scratch_app/result.dart';
+import 'quiz.dart';
 
 void main() {
   //from material.dart
@@ -27,10 +27,27 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  final _questions = [
+    //use maps
+    {
+      'questionText': 'What\'s your favourite color?',
+      'answers': ['Black', 'Red', 'Green', 'White'],
+    },
+    {
+      'questionText': 'What\'s your favourite animal?',
+      'answers': ['Cat', 'Rabbit', 'Snake', 'Elephant'],
+    },
+    {
+      'questionText': 'What\'s your favourite Instructor?',
+      'answers': ['Max', 'Max', 'Max', 'Max'],
+    },
+  ];
 //function for onpressed button
   var _questionIndex = 0;
 
   void _answerQuestion() {
+    if (_questionIndex < _questions.length) {}
+
     setState(() {
       _questionIndex++;
     });
@@ -42,11 +59,6 @@ class _MyAppState extends State<MyApp> {
   //override from statelesswidget class
   @override
   Widget build(BuildContext context) {
-    var questions = [
-      'What\'s your favourite color?',
-      'What\'s your favourite animal?',
-    ];
-
     //return material app widget, turn combination off widget to real app
 
     return MaterialApp(
@@ -54,17 +66,14 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: Text('My First quiz App'),
         ),
-        body: Column(
-          children: [
-            Question(
-              //variable store array of string
-              questions[_questionIndex],
-            ),
-            Answer(_answerQuestion),
-            Answer(_answerQuestion),
-            Answer(_answerQuestion),
-          ],
-        ),
+        body: _questionIndex < _questions.length
+            ? Quiz(
+                answerQuestion: _answerQuestion,
+                questionIndex: _questionIndex,
+                questions: _questions,
+              )
+            : // ? = if , : = else
+            result(),
       ),
     );
   }
