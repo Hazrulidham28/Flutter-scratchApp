@@ -32,21 +32,39 @@ class _MyAppState extends State<MyApp> {
     //use maps
     {
       'questionText': 'What\'s your favourite color?',
-      'answers': ['Black', 'Red', 'Green', 'White'],
+      'answers': [
+        {'text': 'Black', 'score': 10},
+        {'text': 'Red', 'score': 5},
+        {'text': 'Green', 'score': 4},
+        {'text': 'Black', 'score': 1}
+      ],
     },
     {
       'questionText': 'What\'s your favourite animal?',
-      'answers': ['Cat', 'Rabbit', 'Snake', 'Elephant'],
+      'answers': [
+        {'text': 'Cat', 'score': 3},
+        {'text': 'Rabbit', 'score': 5},
+        {'text': 'Snake', 'score': 7},
+        {'text': 'Cat', 'score': 10}
+      ],
     },
     {
-      'questionText': 'What\'s your favourite Instructor?',
-      'answers': ['Max', 'Max', 'Max', 'Max'],
+      'questionText': 'What\'s your favourite Lecturer?',
+      'answers': [
+        {'text': 'Manab', 'score': 0},
+        {'text': 'Puey', 'score': 0},
+        {'text': 'Yadi', 'score': 0},
+        {'text': 'Yabdul', 'score': 0}
+      ],
     },
   ];
 //function for onpressed button
   var _questionIndex = 0;
+  var _totalScore = 0;
 
-  void _answerQuestion() {
+  void _answerQuestion(int score) {
+    _totalScore += score;
+
     setState(() {
       _questionIndex++;
     });
@@ -63,7 +81,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('My First quiz App'),
+          title: Text('Personality Test'),
         ),
         body: _questionIndex < _questions.length
             ? Quiz(
@@ -72,7 +90,7 @@ class _MyAppState extends State<MyApp> {
                 questions: _questions,
               )
             : // ? = if , : = else
-            Result(),
+            Result(_totalScore),
       ),
     );
   }
